@@ -11,9 +11,9 @@
     <div class="w-full flex justify-center pt-8">
       <div class="flex flex-col w-3/5">
         <div class="border-b-gray-300 border-b pb-4">
-          <span class="text-3xl font-semibold" id="title"></span>
+          <span class="text-2xl font-semibold text-slate-700" id="title"></span>
         </div>
-        <article class="prose prose-normal lg:prose-xl hover:prose-a:text-blue-500" id="content">
+        <article class="pt-4 prose prose-normal hover:prose-a:text-blue-500" id="content">
         </article>
       </div>
     </div>
@@ -31,9 +31,8 @@
       let title = params.get('title');
       const post = await _content(id);
       const content = fromBinary(post.content);
-      document.getElementById('title').innerText = title;
+      document.getElementById('title').innerText = '#. ' + title;
       document.getElementById('content').innerHTML = marked.parse(content);
-      console.log(marked.parse(content));
     }
 
     loadContent();
