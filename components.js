@@ -10,7 +10,9 @@ const component = (targetElementId, render) => {
 component('header', element => {
   element.innerHTML = `
     <nav id="navbar" class="bg-white flex items-center space-x-4 flex-row p-4 pl-6 border-b-gray-200 border-b">
-      <p class="text-lg font-semibold text-black">감자맨 블로그</p>
+      <a href="/index.html">
+        <p class="text-lg font-semibold text-black">감자맨 블로그</p>
+      </a>
     </nav>
   `;
 });
