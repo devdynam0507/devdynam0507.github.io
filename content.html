@@ -6,11 +6,42 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>감자맨의 블로그</title>
+
+    <script>
+      
+    </script>
   </head>
   <body class="w-full h-full">
     <header id="header"></header>
-    <div class="flex flex-col w-3/5">
-
+    <div class="w-full flex justify-center pt-8">
+      <div class="flex flex-col w-3/5">
+        <div class="border-b-gray-300 border-b pb-4">
+          <span class="text-3xl font-semibold" id="title"></span>
+        </div>
+        <div class="pt-4 text-xl" id="content">
+        </div>
+      </div>
     </div>
   </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    function fromBinary(encoded) {
+      console.log(encoded)
+      return atob(encoded);
+    }
+
+    async function loadContent() {
+      let params = (new URL(document.location)).searchParams;
+      let id = params.get("id");
+      let title = params.get('title');
+      const post = await _content(id);
+      console.log(post);
+      const content = fromBinary(post.content);
+      document.getElementById('title').innerText = title;
+      document.getElementById('content').innerHTML = marked.parse(content);
+    }
+
+    loadContent();
+  </script>
 </html>

@@ -23,3 +23,10 @@ async function _posts() {
   }
   return await getPosts(postDirectory[0].url);
 }
+
+async function _content(id) {
+  const url = `https://api.github.com/repos/devdynam0507/devdynam0507.github.io/git/blobs/${id}`;
+  const post = await fetch(url)
+    .then(res => res.json())
+  return post;
+}

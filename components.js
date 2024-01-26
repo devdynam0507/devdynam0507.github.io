@@ -63,7 +63,7 @@ component('contents', async (element) => {
       .replaceAll('_', ' ');
     div.innerHTML = `
       <div class="flex flex-col border-b-gray-200 border-b p-4 w-full">
-        <a href="#" class="underline text-2xl font-semibold text-black">${title}</a>
+        <a href="./content.html?title=${title}&realtitle=${post.path}&id=${post.sha}" class="underline text-2xl font-semibold text-black">${title}</a>
         <div class="flex flex-row space-x-2 items-center mt-4">
           <svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
             width="15" height="15" viewBox="0 0 610.398 610.398"
@@ -100,7 +100,7 @@ component('contents', async (element) => {
           </svg>
           <p class="text-sm text-gray-400">${date.replaceAll('-', '.')}</p>
         </div>
-      </div>   
+      </div>
     `
     return div;
   });
