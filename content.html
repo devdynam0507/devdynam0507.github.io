@@ -27,8 +27,7 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
     function fromBinary(encoded) {
-      console.log(encoded)
-      return atob(encoded);
+      return decodeURIComponent(escape(window.atob(encoded)));
     }
 
     async function loadContent() {
@@ -36,7 +35,6 @@
       let id = params.get("id");
       let title = params.get('title');
       const post = await _content(id);
-      console.log(post);
       const content = fromBinary(post.content);
       document.getElementById('title').innerText = title;
       document.getElementById('content').innerHTML = marked.parse(content);
