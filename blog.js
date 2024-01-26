@@ -16,16 +16,12 @@ async function getRootDirectories(user, repo) {
 }
 
 document.addEventListener("DOMContentLoaded", async (event) => {
-  const nav = document.getElementById("navbar");
-  if (!nav) {
-    return;
-  }
   const directories = await getRootDirectories(githubUserId, blogRepositoryName);
   const postDirectory = directories.filter(dir => dir.path === 'posts');
-  console.log(postDirectory);
   if (!postDirectory) {
     return;
   }
   const posts = await getPosts(postDirectory[0].url);
+  console.log(posts);
   localStorage.setItem(JSON.stringify(posts));
 });
